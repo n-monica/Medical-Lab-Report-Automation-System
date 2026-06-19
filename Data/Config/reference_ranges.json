@@ -1,0 +1,53 @@
+{
+  "CBC": {
+    "Hemoglobin": [
+      {"ageGroup": "Child", "minAge": 5, "maxAge": 12, "gender": "Both", "min": 11.5, "max": 15.5, "unit": "g/dL"},
+      {"ageGroup": "Teen", "minAge": 13, "maxAge": 17, "gender": "Female", "min": 12.0, "max": 16.0, "unit": "g/dL"},
+      {"ageGroup": "Teen", "minAge": 13, "maxAge": 17, "gender": "Male", "min": 13.0, "max": 16.0, "unit": "g/dL"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 60, "gender": "Female", "min": 12.0, "max": 16.0, "unit": "g/dL"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 60, "gender": "Male", "min": 14.0, "max": 18.0, "unit": "g/dL"},
+      {"ageGroup": "Elderly", "minAge": 61, "maxAge": 120, "gender": "Female", "min": 11.7, "max": 16.0, "unit": "g/dL"},
+      {"ageGroup": "Elderly", "minAge": 61, "maxAge": 120, "gender": "Male", "min": 13.2, "max": 17.3, "unit": "g/dL"}
+    ],
+    "WBC": [
+      {"ageGroup": "Child", "minAge": 5, "maxAge": 12, "gender": "Both", "min": 5000, "max": 15000, "unit": "cells/μL"},
+      {"ageGroup": "Teen", "minAge": 13, "maxAge": 17, "gender": "Both", "min": 4500, "max": 13000, "unit": "cells/μL"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 60, "gender": "Both", "min": 4000, "max": 11000, "unit": "cells/μL"},
+      {"ageGroup": "Elderly", "minAge": 61, "maxAge": 120, "gender": "Both", "min": 3800, "max": 10500, "unit": "cells/μL"}
+    ],
+    "Platelets": [
+      {"ageGroup": "All", "minAge": 0, "maxAge": 120, "gender": "Both", "min": 150000, "max": 450000, "unit": "cells/μL"}
+    ]
+  },
+  "Thyroid": {
+    "TSH": [
+      {"ageGroup": "Child", "minAge": 5, "maxAge": 12, "gender": "Both", "min": 0.7, "max": 5.7, "unit": "mIU/L"},
+      {"ageGroup": "Teen", "minAge": 13, "maxAge": 17, "gender": "Both", "min": 0.5, "max": 4.3, "unit": "mIU/L"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 60, "gender": "Both", "min": 0.4, "max": 4.0, "unit": "mIU/L"},
+      {"ageGroup": "Elderly", "minAge": 61, "maxAge": 120, "gender": "Both", "min": 0.5, "max": 5.0, "unit": "mIU/L"}
+    ],
+    "T3": [
+      {"ageGroup": "All", "minAge": 5, "maxAge": 120, "gender": "Both", "min": 80, "max": 200, "unit": "ng/dL"}
+    ],
+    "T4": [
+      {"ageGroup": "All", "minAge": 5, "maxAge": 120, "gender": "Both", "min": 5.0, "max": 12.0, "unit": "μg/dL"}
+    ]
+  },
+  "Lipid": {
+    "Cholesterol": [
+      {"ageGroup": "Child", "minAge": 5, "maxAge": 17, "gender": "Both", "min": 0, "max": 170, "unit": "mg/dL"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 120, "gender": "Both", "min": 0, "max": 200, "unit": "mg/dL"}
+    ],
+    "HDL": [
+      {"ageGroup": "All", "minAge": 5, "maxAge": 120, "gender": "Female", "min": 50, "max": 90, "unit": "mg/dL"},
+      {"ageGroup": "All", "minAge": 5, "maxAge": 120, "gender": "Male", "min": 40, "max": 60, "unit": "mg/dL"}
+    ],
+    "LDL": [
+      {"ageGroup": "All", "minAge": 5, "maxAge": 120, "gender": "Both", "min": 0, "max": 100, "unit": "mg/dL"}
+    ],
+    "Triglycerides": [
+      {"ageGroup": "Child", "minAge": 5, "maxAge": 17, "gender": "Both", "min": 0, "max": 90, "unit": "mg/dL"},
+      {"ageGroup": "Adult", "minAge": 18, "maxAge": 120, "gender": "Both", "min": 0, "max": 150, "unit": "mg/dL"}
+    ]
+  }
+}

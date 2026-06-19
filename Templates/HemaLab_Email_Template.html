@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HemaLab — Lab Report Email Template</title>
+<!--
+  ╔══════════════════════════════════════════════════════════════════════╗
+  ║  HEMALAB EMAIL TEMPLATE — UiPath Ready                              ║
+  ║  ─────────────────────────────────────────────────────────────────  ║
+  ║  PLACEHOLDERS (replace via UiPath Assign / String.Format):          ║
+  ║    {{PATIENT_NAME}}      — Full name of the patient                 ║
+  ║    {{PATIENT_ID}}        — CR / Patient ID number                   ║
+  ║    {{PATIENT_AGE}}       — Age in years                             ║
+  ║    {{PATIENT_GENDER}}    — Male / Female / Other                    ║
+  ║    {{COLLECTION_DATE}}   — Sample collection date                   ║
+  ║    {{REPORT_DATE}}       — Report generated date                    ║
+  ║    {{SAMPLE_NO}}         — Sample / Barcode number                  ║
+  ║    {{TEST_NAME}}         — e.g. Complete Blood Count                ║
+  ║    {{RESULT_STATUS}}     — Normal / Abnormal / Critical             ║
+  ║    {{STATUS_COLOR}}      — CSS gradient (set via UiPath If activity)║
+  ║    {{STATUS_ICON}}       — ✔ Normal | ⚠ Abnormal | 🚨 Critical    ║
+  ║    {{DOCTOR_NAME}}       — Referring doctor name                    ║
+  ║    {{RECIPIENT_EMAIL}}   — Patient / recipient email (To field)     ║
+  ║    {{ATTACHMENT_NAME}}   — PDF filename e.g. P009.pdf               ║
+  ║                                                                      ║
+  ║         
+  ╚══════════════════════════════════════════════════════════════════════╝
+-->
+</head>
+<body style="margin:0;padding:0;background-color:#f0ece4;font-family:'Segoe UI',Arial,sans-serif;">
+
+<!-- OUTER WRAPPER -->
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color:#f0ece4;min-height:100vh;">
+<tr><td align="center" style="padding:32px 16px;">
+
+<!-- EMAIL CARD -->
+<table role="presentation" width="620" cellspacing="0" cellpadding="0" style="max-width:620px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 40px rgba(100,70,20,0.13);">
+
+  <!-- ═══════════════════ HEADER / LOGO BAND ═══════════════════ -->
+  <tr>
+    <td style="background:linear-gradient(135deg,#1a120a 0%,#3d2508 50%,#5c3610 100%);padding:32px 40px;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="72" valign="middle">
+            <!-- SVG LOGO — same style as PDF report -->
+            <img 
+src="https://i.postimg.cc/V6Ckxf6F/Logo.png" 
+width="64"
+style="display:block;border:none;outline:none;text-decoration:none;">
+
+          </td>
+          <td style="padding-left:20px;" valign="middle">
+            <div style="font-family:'Palatino Linotype',Georgia,serif;font-size:28px;font-weight:700;color:#e8c060;letter-spacing:3px;line-height:1;">HEMALAB</div>
+            <div style="font-size:11px;color:#c8a050;letter-spacing:2.5px;text-transform:uppercase;margin-top:5px;opacity:0.85;">Advanced Haematology &amp; Diagnostic Center</div>
+            <div style="margin-top:10px;display:flex;gap:8px;">
+              <span style="display:inline-block;background:rgba(200,146,26,0.15);border:1px solid rgba(200,146,26,0.3);color:#c8921a;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;">NABL Accredited</span>
+              <span style="display:inline-block;background:rgba(200,146,26,0.15);border:1px solid rgba(200,146,26,0.3);color:#c8921a;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;">ISO 15189:2022</span>
+            </div>
+          </td>
+          <td align="right" valign="top" style="font-size:10px;color:rgba(200,160,80,0.6);font-family:'Courier New',monospace;letter-spacing:0.5px;white-space:nowrap;">
+            <div>reports@hemalab.com</div>
+            <div style="margin-top:4px;">+91 9876543202</div>
+            <div style="margin-top:4px;">123 Lakshmi Ave, Theni</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ GOLD DIVIDER LINE ═══════════════════ -->
+  <tr>
+    <td style="height:3px;background:linear-gradient(90deg,#8b5e0a,#e8c060,#c8921a,#8b5e0a);"></td>
+  </tr>
+
+  <!-- ═══════════════════ GREETING BLOCK ═══════════════════ -->
+  <tr>
+    <td style="padding:36px 40px 0 40px;">
+      <p style="font-size:15px;color:#4a3520;margin:0 0 6px 0;">Dear <strong style="color:#2c1a08;">{{PATIENT_NAME}}</strong>,</p>
+      <p style="font-size:14px;color:#6b5540;line-height:1.7;margin:0;">
+        Your laboratory investigation report from <strong>HemaLab Advanced Haematology &amp; Diagnostic Center</strong> has been processed and is now ready. Please find your detailed report attached to this email as <strong>{{ATTACHMENT_NAME}}</strong>.
+      </p>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ STATUS BANNER ═══════════════════ -->
+  <tr>
+    <td style="padding:24px 40px 0 40px;">
+      <!-- STATUS BANNER — driven by {{STATUS_COLOR}} and {{STATUS_ICON}} placeholders.
+           UiPath sets these before sending:
+             Normal   → STATUS_COLOR = "linear-gradient(135deg,#1a7a56,#0f5c3a)"  STATUS_ICON = "✔"
+             Abnormal → STATUS_COLOR = "linear-gradient(135deg,#c0392b,#96211a)"  STATUS_ICON = "⚠"
+             Critical → STATUS_COLOR = "linear-gradient(135deg,#8b0000,#5c0000)"  STATUS_ICON = "🚨" -->
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:{{STATUS_COLOR}};border-radius:10px;overflow:hidden;">
+        <tr>
+          <td style="padding:18px 24px;">
+            <table role="presentation" cellspacing="0" cellpadding="0">
+              <tr>
+                <td style="padding-right:14px;vertical-align:middle;">
+                  <!-- Status icon — replaced by {{STATUS_ICON}} -->
+                  <svg width="36" height="36" viewBox="0 0 36 36">
+                    <circle cx="18" cy="18" r="17" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                    <text x="18" y="24" text-anchor="middle" font-size="20" fill="white">{{STATUS_ICON}}</text>
+                  </svg>
+                </td>
+                <td valign="middle">
+                  <div style="font-size:10px;color:rgba(255,220,200,0.8);letter-spacing:2.5px;text-transform:uppercase;font-family:'Courier New',monospace;">Result Status</div>
+                  <div style="font-size:22px;font-weight:700;color:#ffffff;font-family:'Palatino Linotype',Georgia,serif;letter-spacing:1px;margin-top:2px;">{{RESULT_STATUS}}</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td align="right" style="padding:18px 24px;vertical-align:middle;">
+            <div style="font-size:10px;color:rgba(255,220,200,0.7);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;">Test Name</div>
+            <div style="font-size:14px;font-weight:600;color:#fff;max-width:180px;text-align:right;">{{TEST_NAME}}</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ PATIENT INFO GRID ═══════════════════ -->
+  <tr>
+    <td style="padding:24px 40px 0 40px;">
+      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b8a090;font-family:'Courier New',monospace;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #e8ddd0;">Patient Information</div>
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+          <!-- Cell 1 -->
+          <td width="33%" style="padding:10px 0;border-bottom:1px solid #f0ece4;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Patient Name</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;">{{PATIENT_NAME}}</div>
+          </td>
+          <!-- Cell 2 -->
+          <td width="33%" style="padding:10px 16px;border-bottom:1px solid #f0ece4;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Patient ID</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;font-family:'Courier New',monospace;">{{PATIENT_ID}}</div>
+          </td>
+          <!-- Cell 3 -->
+          <td width="34%" style="padding:10px 0;border-bottom:1px solid #f0ece4;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Age / Gender</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;">{{PATIENT_AGE}} Yrs / {{PATIENT_GENDER}}</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:10px 0;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Sample Number</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;font-family:'Courier New',monospace;">{{SAMPLE_NO}}</div>
+          </td>
+          <td style="padding:10px 16px;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Collected On</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;">{{COLLECTION_DATE}}</div>
+          </td>
+          <td style="padding:10px 0;vertical-align:top;">
+            <div style="font-size:9px;color:#b8a090;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Referring Doctor</div>
+            <div style="font-size:13px;font-weight:600;color:#2c1a08;">Dr. {{DOCTOR_NAME}}</div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ ATTACHMENT NOTICE ═══════════════════ -->
+  <tr>
+    <td style="padding:24px 40px 0 40px;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#faf7f2;border:1px solid #e0d0b8;border-left:4px solid #c8921a;border-radius:10px;cursor:pointer;transition:all 0.3s ease;box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+        <tr>
+          <td style="padding:16px 20px;">
+            <table role="presentation" cellspacing="0" cellpadding="0">
+              <tr>
+                <td style="padding-right:14px;vertical-align:middle;">
+                  <!-- PDF icon -->
+                  <svg width="38" height="44" viewBox="0 0 38 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="38" height="44" rx="5" fill="#c0392b"/>
+                    <rect x="0" y="0" width="38" height="14" rx="5" fill="#96211a"/>
+                    <rect x="0" y="9" width="38" height="5" fill="#96211a"/>
+                    <text x="19" y="12" text-anchor="middle" font-size="8" fill="white" font-family="Arial" font-weight="700" letter-spacing="0.5">PDF</text>
+                    <rect x="7" y="20" width="24" height="2" rx="1" fill="white" opacity="0.7"/>
+                    <rect x="7" y="25" width="18" height="2" rx="1" fill="white" opacity="0.5"/>
+                    <rect x="7" y="30" width="21" height="2" rx="1" fill="white" opacity="0.5"/>
+                    <rect x="7" y="35" width="14" height="2" rx="1" fill="white" opacity="0.4"/>
+                  </svg>
+                </td>
+                <td valign="middle">
+                  <div style="font-size:12px;font-weight:700;color:#3d2508;margin-bottom:2px;">📄 {{ATTACHMENT_NAME}}</div>
+                  <div style="font-size:11px;color:#8a7d6a;">
+Your complete diagnostic report is attached · Report Date: {{REPORT_DATE}}
+</div>
+
+<div style="
+font-size:11px;
+color:#b08a45;
+margin-top:6px;
+font-style:italic;
+">
+📎 Open the attached PDF report below in Gmail
+</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ IMPORTANT NOTICE ═══════════════════ -->
+  <tr>
+    <td style="padding:24px 40px 0 40px;">
+      <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background:#fffdf5;border:1px solid #e8ddc0;border-radius:8px;">
+        <tr>
+          <td style="padding:18px 22px;">
+            <div style="font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:#c8921a;font-family:'Courier New',monospace;margin-bottom:10px;">⚕ Important Notice</div>
+            <p style="font-size:12px;color:#6b5540;line-height:1.8;margin:0 0 8px 0;">
+              The values in your report have been flagged as <strong style="color:#c0392b;">{{RESULT_STATUS}}</strong>. We strongly recommend consulting <strong>Dr. {{DOCTOR_NAME}}</strong> or your primary care physician to discuss these results and determine any required follow-up.
+            </p>
+            <p style="font-size:11px;color:#9a8870;line-height:1.6;margin:0;">
+              This report is generated and verified by our certified laboratory team. If you notice any discrepancy or have queries regarding your results, please contact us within 48 hours of receiving this report.
+            </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ CONTACT / ACTION BUTTONS ═══════════════════ -->
+  <tr>
+    <td style="padding:28px 40px 0 40px;">
+      <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#b8a090;font-family:'Courier New',monospace;margin-bottom:16px;">Get in Touch</div>
+      <table role="presentation" cellspacing="0" cellpadding="0">
+        <tr>
+          <td style="padding-right:12px;">
+            <a href="tel:+919876543202" style="display:inline-block;background:linear-gradient(135deg,#2c1a08,#4a2e10);color:#e8c060;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:6px;font-family:'Courier New',monospace;">📞 Call Us</a>
+          </td>
+          <td style="padding-right:12px;">
+            <a href="mailto:reports@hemalab.com" style="display:inline-block;background:#faf7f2;border:1px solid #d4a820;color:#8b6914;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:6px;font-family:'Courier New',monospace;">✉ Email Us</a>
+          </td>
+          <td>
+            <a href="#" style="display:inline-block;background:#faf7f2;border:1px solid #e0d0b8;color:#8a7d6a;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:6px;font-family:'Courier New',monospace;">🌐 Portal(Coming Soon)</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ GOLD RULE ═══════════════════ -->
+  <tr>
+    <td style="padding:32px 40px 0 40px;">
+      <div style="height:1px;background:linear-gradient(90deg,transparent,#d4a820,transparent);"></div>
+    </td>
+  </tr>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <tr>
+    <td style="padding:22px 40px 32px 40px;text-align:center;">
+      <div style="font-family:'Palatino Linotype',Georgia,serif;font-size:13px;color:#8b6914;letter-spacing:2px;margin-bottom:6px;">HEMALAB</div>
+      <div style="font-size:10px;color:#b8a090;letter-spacing:0.5px;line-height:1.8;">
+        123 Lakshmi Avenue, Theni District, Tamil Nadu &nbsp;·&nbsp; +91 9876543202 &nbsp;·&nbsp; reports@hemalab.com<br>
+        <span style="font-family:'Courier New',monospace;font-size:9px;color:#c8b090;letter-spacing:1px;">NABL · ISO 15189:2022 · CAP Accredited</span>
+      </div>
+      <div style="margin-top:14px;font-size:9px;color:#c8b8a0;line-height:1.6;">
+        This is an automated email generated by HemaLab Diagnostic System. Please do not reply directly to this email.<br>
+        Report ID: <span style="font-family:'Courier New',monospace;color:#a09080;">{{SAMPLE_NO}}</span> &nbsp;·&nbsp; Generated: {{REPORT_DATE}}
+      </div>
+      <div style="margin-top:14px;">
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c8921a;margin:0 3px;"></span>
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#d4a820;margin:0 3px;"></span>
+        <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#e8c060;margin:0 3px;"></span>
+      </div>
+    </td>
+  </tr>
+
+</table>
+<!-- END EMAIL CARD -->
+
+
+  
+
+</body>
+</html>
