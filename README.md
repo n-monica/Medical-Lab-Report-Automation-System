@@ -87,15 +87,31 @@ Send Email with Attachment
 
 ## 📧 Automated Email Notification
 
-The system automatically sends an email to the patient containing the laboratory result summary along with the generated PDF report.
-![Email Output](Screenshots/Email_Output.png)
-## 📄 Generated Medical PDF Report
+The system automatically sends a professional email containing the patient's laboratory report.
 
-Professional laboratory report generated automatically after validation.
-
-![PDF Report](Screenshots/PDF_Report.pdf)
+![Email Output](Screenshots/Email_ss.png)
 
 ---
+
+## 📄 Generated Laboratory Report (Page 1)
+
+The first page of the report contains patient information, laboratory test results, reference ranges, and abnormal value highlighting.
+
+![PDF Report Page 1](Screenshots/PDF%20Report(Page%201).png)
+
+---
+
+## 📄 Generated Laboratory Report (Page 2)
+
+The second page includes laboratory verification, technician and pathologist authorization, and report completion details.
+
+![PDF Report Page 2](Screenshots/PDF%20Report(Page%202).png)
+
+---
+
+## 📥 Sample PDF Report
+
+[Download Sample PDF Report](Screenshots/P003.pdf)
 
 # 🔐 Security
 
